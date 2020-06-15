@@ -35,6 +35,10 @@ import {
   createStatsTemplate
 } from './components/stats-template';
 
+import {generateFilters} from "./mock/filter.js";
+
+const filters = generateFilters();
+
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
@@ -46,7 +50,7 @@ const tripSection = document.querySelector(`.trip-events`);
 
 render(tripMainElement, createMainRouteInfoTemplate(), `afterbegin`);
 render(tripElement, createMenuTemplate(), `afterend`);
-render(tripControlsElement, createFilterTemplate(), `beforeend`);
+render(tripControlsElement, createFilterTemplate(filters), `beforeend`);
 render(tripSection, createSortTemplate(), `beforeend`);
 render(tripSection, createTripDaysContainerTemplate(), `beforeend`);
 
@@ -54,11 +58,13 @@ const tripDaysElement = document.querySelector(`.trip-days`);
 for (let k = 0; k < 3; k++) {
   render(tripDaysElement, createDayTemplate(), `beforeend`);
 }
-//render(tripDaysElement, createDayTemplate(), `beforeend`);
+
 const dayElement = document.querySelector(`.day`);
 render(dayElement, createTripEventsListTemplate(), `beforeend`);
-const eventListElement = document.querySelector(`.trip-events__list`);
 
+//===================
+
+//const eventListElement = document.querySelector(`.trip-events__list`);
 //render(tripSection, createFirstNewEvent(), `beforeend`);
 //render(tripSection, createEventEditTemplate(), `beforeend`);
 //render(tripSection, createNewEventTemplate(), `beforeend`);
