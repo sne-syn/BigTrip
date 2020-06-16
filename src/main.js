@@ -1,6 +1,9 @@
 import {
-  createEvent
-} from './components/create-event-template.js';
+  createPoint
+} from './components/point-template';
+import {
+  createPointsListTemplate
+} from './components/points-list-template';
 import {
   createDayTemplate
 } from './components/day-template.js';
@@ -34,10 +37,15 @@ import {
 import {
   createStatsTemplate
 } from './components/stats-template';
+import {
+  generatePoints, generatePoint
+} from './mock/point';
 
 import {generateFilters} from "./mock/filter.js";
 
 const filters = generateFilters();
+const point = generatePoints(2);
+console.log(point);
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -55,17 +63,17 @@ render(tripSection, createSortTemplate(), `beforeend`);
 render(tripSection, createTripDaysContainerTemplate(), `beforeend`);
 
 const tripDaysElement = document.querySelector(`.trip-days`);
-for (let k = 0; k < 3; k++) {
-  render(tripDaysElement, createDayTemplate(), `beforeend`);
-}
+render(tripDaysElement, createDayTemplate(), `beforeend`);
 
 const dayElement = document.querySelector(`.day`);
 render(dayElement, createTripEventsListTemplate(), `beforeend`);
-
+render(dayElement, createPointsListTemplate(), `beforeend`);
 //===================
 
-//const eventListElement = document.querySelector(`.trip-events__list`);
+const eventListElement = document.querySelector(`.trip-events__list`);
+render(eventListElement, createPoint(), `beforeend`);
+
 //render(tripSection, createFirstNewEvent(), `beforeend`);
 //render(tripSection, createEventEditTemplate(), `beforeend`);
-//render(tripSection, createNewEventTemplate(), `beforeend`);
+render(tripSection, createNewEventTemplate(), `beforeend`);
 //render(tripSection, createStatsTemplate(), `beforeend`);
