@@ -28,7 +28,7 @@ const getRandomBoolean = () => {
 const types = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`, `check-in`, `sightseeing`, `restaurant`];
 
 const generateTripPoint = () => {
-  const id = String(`_` + Math.random().toString(36).substr(2, 9))
+  const id = String(`_` + Math.random().toString(36).substr(2, 9));
   const type = getRandomArrayItem(types);
   const dateFrom = generateTripStartDate();
   const offersCount = getRandomIntegerNumber(OffersCount.MIN, OffersCount.MAX);

@@ -44,8 +44,7 @@ import {
 import {generateFilters} from "./mock/filter.js";
 
 const filters = generateFilters();
-const point = generateTripPoints(2);
-console.log(point);
+const tripPoints = generateTripPoints(20);
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -71,9 +70,9 @@ render(dayElement, createPointsListTemplate(), `beforeend`);
 //===================
 
 const eventListElement = document.querySelector(`.trip-events__list`);
-render(eventListElement, createPoint(), `beforeend`);
+render(eventListElement, createPoint(tripPoints), `beforeend`);
 
 //render(tripSection, createFirstNewEvent(), `beforeend`);
-render(tripSection, createEventEditTemplate(), `beforeend`);
+//render(tripSection, createEventEditTemplate(), `beforeend`);
 //render(tripSection, createNewEventTemplate(), `beforeend`);
 //render(tripSection, createStatsTemplate(), `beforeend`);

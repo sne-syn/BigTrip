@@ -47,7 +47,6 @@ const convertArrayToString = (arr) => {
   return [...arr].join(`, `);
 };
 
-
 const generateTripStartDate = () => {
   const diffDays = getRandomIntegerNumber(1, 5);
   const diffHours = getRandomIntegerNumber(0, 20);
