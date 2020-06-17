@@ -1,11 +1,8 @@
 import {
   getRandomIntegerNumber,
   getRandomArrayItem,
-  getRandomNumber,
-  capitalizeChar,
-  capitalizeEveryFirstChar,
-  getSeveralRandomItems,
-  convertArrayToStrin
+  generateTripStartDate,
+  generateTripEndDate
 } from "./../util/common.js";
 import {
   generateOffersList
@@ -14,69 +11,43 @@ import {
   destinationInfo
 } from "./destination.js";
 
-const typeMap = new Map([
-  [`taxi`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`bus`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`train`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`ship`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`transport`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`drive`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`flight`, {
-    preposition: `to`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`check-in`, {
-    preposition: `in`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`sightseeing`, {
-    preposition: `in`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }],
-  [`restaurant`, {
-    preposition: `in`,
-    offers: [`Order Uber`, `Rent a car`, `Choose the radio station`]
-  }]
-]);
+const OffersCount = {
+  MIN: 0,
+  MAX: 5
+};
+
+const TripPriceRange = {
+  MIN: 10,
+  MAX: 300
+};
+
+const getRandomBoolean = () => {
+  return  Math.random() > 0.5;
+};
 
 const types = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`, `check-in`, `sightseeing`, `restaurant`];
 
-const dateStart = [`2019-07-10T22:55:56.845Z`, `2019-07-10T20:34:56.845Z`, `2019-07-10T12:25:56.845Z`, `2019-07-10T13:20:23.845Z`, `2019-07-10T08:34:56.845Z`];
+const generateTripPoint = () => {
+  const id = String(`_` + Math.random().toString(36).substr(2, 9))
+  const type = getRandomArrayItem(types);
+  const dateFrom = generateTripStartDate();
+  const offersCount = getRandomIntegerNumber(OffersCount.MIN, OffersCount.MAX);
+  const tripPrice = getRandomIntegerNumber(TripPriceRange.MIN, TripPriceRange.MAX);
 
-const dateEnd = [`2019-07-10T22:56:56.845Z`, `2019-07-10T20:44:56.845Z`, `2019-07-10T12:35:56.845Z`, `2019-07-10T15:23:45.845Z`, `2019-07-10T10:34:34.845Z`];
-
-export const generatePoints = () => {
   return {
+    id,
     destination: destinationInfo,
-    type: getRandomArrayItem(types),
-    dateFrom: getRandomArrayItem(dateStart),
-    dateTo: getRandomArrayItem(dateEnd),
-    price: getRandomIntegerNumber(5, 190),
-    offers: generateOffersList(getRandomIntegerNumber(0, 5)),
-    isFavorite: Math.random() > 0.5
+    type,
+    dateFrom,
+    dateTo: generateTripEndDate(dateFrom),
+    price: tripPrice,
+    offers: generateOffersList(offersCount),
+    isFavorite: getRandomBoolean()
   };
 };
 
-export const generatePoint = (count) => {
+export const generateTripPoints = (count) => {
   return new Array(count)
     .fill(``)
-    .map(generatePoints());
+    .map(generateTripPoint);
 };

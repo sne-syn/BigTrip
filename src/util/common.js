@@ -1,3 +1,5 @@
+import {Millisecond} from "./const.js";
+
 // generate randome integer
 const getRandomIntegerNumber = (min, max) => {
   return min + Math.floor(Math.random() * (max - min));
@@ -45,6 +47,23 @@ const convertArrayToString = (arr) => {
   return [...arr].join(`, `);
 };
 
+
+const generateTripStartDate = () => {
+  const diffDays = getRandomIntegerNumber(1, 5);
+  const diffHours = getRandomIntegerNumber(0, 20);
+  const diffMinutes = getRandomIntegerNumber(0, 59);
+  const diffTime = diffDays * Millisecond.IN_DAY + diffHours * Millisecond.IN_HOUR + diffMinutes * Millisecond.IN_MINUTE;
+  return new Date(Date.now() - diffTime);
+};
+
+const generateTripEndDate = (tripStart) => {
+  const diffHours = getRandomIntegerNumber(0, 20);
+  const diffMinutes = getRandomIntegerNumber(0, 59);
+  const diffTime = diffHours * Millisecond.IN_HOUR + diffMinutes * Millisecond.IN_MINUTE;
+
+  return new Date(tripStart.getTime() + diffTime);
+};
+
 export {
   getRandomIntegerNumber,
   getRandomArrayItem,
@@ -53,4 +72,6 @@ export {
   capitalizeEveryFirstChar,
   getSeveralRandomItems,
   convertArrayToString,
+  generateTripStartDate,
+  generateTripEndDate
 };

@@ -38,13 +38,13 @@ import {
   createStatsTemplate
 } from './components/stats-template';
 import {
-  generatePoints, generatePoint
+  generateTripPoints
 } from './mock/point';
 
 import {generateFilters} from "./mock/filter.js";
 
 const filters = generateFilters();
-const point = generatePoints(2);
+const point = generateTripPoints(2);
 console.log(point);
 
 const render = (container, template, place) => {
@@ -74,6 +74,6 @@ const eventListElement = document.querySelector(`.trip-events__list`);
 render(eventListElement, createPoint(), `beforeend`);
 
 //render(tripSection, createFirstNewEvent(), `beforeend`);
-//render(tripSection, createEventEditTemplate(), `beforeend`);
-render(tripSection, createNewEventTemplate(), `beforeend`);
+render(tripSection, createEventEditTemplate(), `beforeend`);
+//render(tripSection, createNewEventTemplate(), `beforeend`);
 //render(tripSection, createStatsTemplate(), `beforeend`);
