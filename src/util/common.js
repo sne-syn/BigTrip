@@ -52,6 +52,7 @@ const generateTripStartDate = () => {
   const diffHours = getRandomIntegerNumber(0, 20);
   const diffMinutes = getRandomIntegerNumber(0, 59);
   const diffTime = diffDays * Millisecond.IN_DAY + diffHours * Millisecond.IN_HOUR + diffMinutes * Millisecond.IN_MINUTE;
+
   return new Date(Date.now() - diffTime);
 };
 
@@ -61,6 +62,13 @@ const generateTripEndDate = (tripStart) => {
   const diffTime = diffHours * Millisecond.IN_HOUR + diffMinutes * Millisecond.IN_MINUTE;
 
   return new Date(tripStart.getTime() + diffTime);
+};
+
+const getISOStringWithoutSecsAndMillisecs1 = (date) => {
+  const dateAndTime = date.toISOString().split('T');
+  const time = dateAndTime[1].split(':');
+
+  return dateAndTime[0]+'T'+time[0]+':'+time[1];
 };
 
 export {

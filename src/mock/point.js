@@ -22,7 +22,7 @@ const TripPriceRange = {
 };
 
 const getRandomBoolean = () => {
-  return  Math.random() > 0.5;
+  return Math.random() > 0.5;
 };
 
 const types = [`taxi`, `bus`, `train`, `ship`, `transport`, `drive`, `flight`, `check-in`, `sightseeing`, `restaurant`];
@@ -38,7 +38,7 @@ const generateTripPoint = () => {
     id,
     destination: destinationInfo,
     type,
-    dateFrom,
+    dateFrom: dateFrom,
     dateTo: generateTripEndDate(dateFrom),
     price: tripPrice,
     offers: generateOffersList(offersCount),

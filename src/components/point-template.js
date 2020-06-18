@@ -1,12 +1,30 @@
+import {
+  capitalizeChar
+} from "./../util/common.js";
+
+const MAX_OFFERS = 3;
 const createOfferTemplate = (offer) => {
   const offersTitle = offer.title;
   const offersPrice = offer.price;
 
-  return `      <li class="event__offer">
+  return `<li class="event__offer">
   <span class="event__offer-title">${offersTitle}</span>
   &plus;
   &euro;&nbsp;<span class="event__offer-price">${offersPrice}</span>
  </li>`;
+};
+
+const createOffersList = (offers) => {
+  let output = ``;
+  for (let i = 0; i < offers.length; i++) {
+    if (i > 2) {
+      break;
+    } else {
+      output += createOfferTemplate(offers[i]);
+    }
+  }
+
+  return output;
 };
 
 export const createPoint = (point) => {
@@ -15,27 +33,27 @@ export const createPoint = (point) => {
     dateFrom,
     dateTo,
     price,
-    offers,destination
-  } = point[0];
+    offers,
+    destination
+  } = point;
+
   const destinationName = destination.name;
   const dateStart = dateFrom.toISOString().slice(0, 16);
   const dateEnd = dateTo.toISOString().slice(0, 16);
-  console.log(offers[0].title);
-
   return `<li class="trip-events__item">
   <div class="event">
     <div class="event__type">
       <img class="event__type-icon" width="42" height="42" src="img/icons/${type}.png" alt="Event type icon">
     </div>
-    <h3 class="event__title">${type} to ${destinationName}</h3>
+    <h3 class="event__title">${capitalizeChar(type)} to ${destinationName}</h3>
 
     <div class="event__schedule">
       <p class="event__time">
-        <time class="event__start-time" datetime="${dateStart}">10:30</time>
+        <time class="event__start-time" datetime="${dateStart}">${dateStart}</time>
         &mdash;
-        <time class="event__end-time" datetime="${dateEnd}">11:00</time>
+        <time class="event__end-time" datetime="${dateEnd}">${dateEnd}</time>
       </p>
-      <p class="event__duration">30M</p>
+      <p class="event__duration">${dateStart} - ${dateEnd}</p>
     </div>
 
     <p class="event__price">
@@ -44,7 +62,7 @@ export const createPoint = (point) => {
 
     <h4 class="visually-hidden">Offers:</h4>
     <ul class="event__selected-offers">
-      ${createOfferTemplate(offers[0])}
+      ${(offers.length > 0) ? createOffersList(offers) : ``}
     </ul>
 
     <button class="event__rollup-btn" type="button">

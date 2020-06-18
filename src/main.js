@@ -70,7 +70,10 @@ render(dayElement, createPointsListTemplate(), `beforeend`);
 //===================
 
 const eventListElement = document.querySelector(`.trip-events__list`);
-render(eventListElement, createPoint(tripPoints), `beforeend`);
+for (let i = 0; i < 5; i++) {
+  render(eventListElement, createPoint(tripPoints[i]), `beforeend`);
+}
+
 
 //render(tripSection, createFirstNewEvent(), `beforeend`);
 //render(tripSection, createEventEditTemplate(), `beforeend`);
