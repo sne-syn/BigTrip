@@ -43,6 +43,7 @@ import {
 
 import {generateFilters} from "./mock/filter.js";
 
+const POINTS_COUNT = 5;
 const filters = generateFilters();
 const tripPoints = generateTripPoints(20);
 
@@ -71,11 +72,11 @@ render(dayElement, createPointsListTemplate(), `beforeend`);
 //===================
 
 const eventListElement = document.querySelector(`.trip-events__list`);
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < POINTS_COUNT; i++) {
   render(eventListElement, createPoint(tripPoints[i]), `beforeend`);
 }
 
-render(tripMainSortElement, createEventEditTemplate(), `afterend`);
+//render(tripMainSortElement, createEventEditTemplate(), `afterend`);
 //render(tripSection, createFirstNewEvent(), `beforeend`);
-//render(tripSection, createNewEventTemplate(), `afterbegin`);
+render(tripMainSortElement, createNewEventTemplate(tripPoints[0]), `afterend`);
 //render(tripSection, createStatsTemplate(), `beforeend`);

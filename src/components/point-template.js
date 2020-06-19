@@ -36,7 +36,6 @@ export const createPoint = (point) => {
     offers,
     destination
   } = point;
-  console.log(destination)
 
   const destinationName = destination.name;
   const dateStart = dateFrom.toISOString().slice(0, 16);
