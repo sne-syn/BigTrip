@@ -62,6 +62,7 @@ render(tripSection, createSortTemplate(), `beforeend`);
 render(tripSection, createTripDaysContainerTemplate(), `beforeend`);
 
 const tripDaysElement = document.querySelector(`.trip-days`);
+const tripMainSortElement = document.querySelector(`.trip-sort`);
 render(tripDaysElement, createDayTemplate(), `beforeend`);
 
 const dayElement = document.querySelector(`.day`);
@@ -74,8 +75,7 @@ for (let i = 0; i < 5; i++) {
   render(eventListElement, createPoint(tripPoints[i]), `beforeend`);
 }
 
-
+render(tripMainSortElement, createEventEditTemplate(), `afterend`);
 //render(tripSection, createFirstNewEvent(), `beforeend`);
-//render(tripSection, createEventEditTemplate(), `beforeend`);
-//render(tripSection, createNewEventTemplate(), `beforeend`);
+//render(tripSection, createNewEventTemplate(), `afterbegin`);
 //render(tripSection, createStatsTemplate(), `beforeend`);

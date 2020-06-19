@@ -8,7 +8,7 @@ import {
   generateOffersList
 } from "./offer.js";
 import {
-  destinationInfo
+  generateDestinationInfo
 } from "./destination.js";
 
 const OffersCount = {
@@ -36,7 +36,7 @@ const generateTripPoint = () => {
 
   return {
     id,
-    destination: destinationInfo,
+    destination: generateDestinationInfo(),
     type,
     dateFrom: dateFrom,
     dateTo: generateTripEndDate(dateFrom),

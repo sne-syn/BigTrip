@@ -1,4 +1,5 @@
-const createFilterMarkup = (name, isChecked) => {
+const createFilterMarkup = (filter, isChecked) => {
+  const {name} = filter;
   const checkedState = isChecked ? `checked` : ``;
 
   return `<div class="trip-filters__filter">
@@ -8,9 +9,7 @@ const createFilterMarkup = (name, isChecked) => {
 };
 
 export const createFilterTemplate = (filters) => {
-  const isChecked = `true`;
-  const filterMarkups = filters.map((it) => createFilterMarkup(it.name, true)).join(`\n`) ;
-  createFilterMarkup(name, isChecked);
+  const filterMarkups = filters.map((it, i) => createFilterMarkup(it, i === 0)).join(`\n`);
   return `<form class="trip-filters" action="#" method="get">
   ${filterMarkups}
   <button class="visually-hidden" type="submit">Accept filter</button>

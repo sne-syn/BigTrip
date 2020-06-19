@@ -1,3 +1,5 @@
+export const menuTabs = [`stats`, `table`];
+
 export const Millisecond = {
   IN_DAY: 86400000,
   IN_HOUR: 3600000,
@@ -22,7 +24,7 @@ export const tripOffersMap = new Map([
     "price": 70
   }]],
   [`Bus`, [{
-    "title": `Infotainment system`,
+    "title": `Intertainment system`,
     "price": 30
   }, {
     "title": `Order meal`,
