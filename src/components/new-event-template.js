@@ -1,17 +1,90 @@
+const createDestinationSectionTemplate = (description, photo) => {
+  return `<section class="event__section  event__section--destination">
+  <h3 class="event__section-title  event__section-title--destination">Destination</h3>
+  <p class="event__destination-description">${description}</p>
+
+  <div class="event__photos-container">
+    <div class="event__photos-tape">
+
+      <img class="event__photo" src=${photo} alt="Event photo">
+      <img class="event__photo" src=${photo} alt="Event photo">
+      <img class="event__photo" src=${photo} alt="Event photo">
+      <img class="event__photo" src=${photo} alt="Event photo">
+      <img class="event__photo" src=${photo} alt="Event photo">
+    </div>
+  </div>
+</section>`;
+};
+
+const createOffersSectionTemplate = () => {
+  const offerType = `luggage`;
+  const offerPrice = 25;
+  const isChosen = `checked`;
+  return `<section class="event__section  event__section--offers">
+  <h3 class="event__section-title  event__section-title--offers">Offers</h3>
+
+  <div class="event__available-offers">
+    <div class="event__offer-selector">
+      <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}" ${isChosen}>
+      <label class="event__offer-label" for="event-offer-${offerType}-1">
+        <span class="event__offer-title">${offerType}</span>
+        &plus;
+        &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+      </label>
+    </div>
+
+    <div class="event__offer-selector">
+      <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}" ${isChosen}>
+      <label class="event__offer-label" for="event-offer-${offerType}-1">
+        <span class="event__offer-title">${offerType}class</span>
+        &plus;
+        &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+      </label>
+    </div>
+
+    <div class="event__offer-selector">
+      <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}">
+      <label class="event__offer-label" for="event-offer-${offerType}-1">
+        <span class="event__offer-title">${offerType}</span>
+        &plus;
+        &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+      </label>
+    </div>
+
+    <div class="event__offer-selector">
+      <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}">
+      <label class="event__offer-label" for="event-offer-${offerType}-1">
+        <span class="event__offer-title">${offerType}</span>
+        &plus;
+        &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+      </label>
+    </div>
+
+    <div class="event__offer-selector">
+      <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}">
+      <label class="event__offer-label" for="event-offer-${offerType}-1">
+        <span class="event__offer-title">${offerType}</span>
+        &plus;
+        &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
+      </label>
+    </div>
+  </div>
+</section>`;
+};
+
 export const createNewEventTemplate = (point) => {
   const {} = point;
 
   const eventAction = `event--edit`;
   const type = `flight`;
   const isChecked = `checked`;
-  const isChosen = `checked`;
+
   const destinationName = `London`;
   const preposition = ` to`;
   const timeFrom = `18/03/19 12:25`;
   const timeTo = `18/03/23 13:35`;
   const price = 234;
-  const offerType = `luggage`;
-  const offerPrice = 25;
+
   const description = `Geneva is a city in Switzerland that lies at the southern tip of expansive Lac Léman (Lake Geneva). Surrounded by the Alps and Jura mountains, the city has views of dramatic Mont Blanc.`;
   const photo = `"http://picsum.photos/248/152?r=${Math.random()}"`;
 
@@ -122,72 +195,9 @@ export const createNewEventTemplate = (point) => {
     <button class="event__reset-btn" type="reset">Cancel</button>
   </header>
   <section class="event__details">
-    <section class="event__section  event__section--offers">
-      <h3 class="event__section-title  event__section-title--offers">Offers</h3>
 
-      <div class="event__available-offers">
-        <div class="event__offer-selector">
-          <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}" ${isChosen}>
-          <label class="event__offer-label" for="event-offer-${offerType}-1">
-            <span class="event__offer-title">${offerType}</span>
-            &plus;
-            &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
-          </label>
-        </div>
-
-        <div class="event__offer-selector">
-          <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}" ${isChosen}>
-          <label class="event__offer-label" for="event-offer-${offerType}-1">
-            <span class="event__offer-title">${offerType}class</span>
-            &plus;
-            &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
-          </label>
-        </div>
-
-        <div class="event__offer-selector">
-          <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}">
-          <label class="event__offer-label" for="event-offer-${offerType}-1">
-            <span class="event__offer-title">${offerType}</span>
-            &plus;
-            &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
-          </label>
-        </div>
-
-        <div class="event__offer-selector">
-          <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}">
-          <label class="event__offer-label" for="event-offer-${offerType}-1">
-            <span class="event__offer-title">${offerType}</span>
-            &plus;
-            &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
-          </label>
-        </div>
-
-        <div class="event__offer-selector">
-          <input class="event__offer-checkbox  visually-hidden" id="event-offer-${offerType}-1" type="checkbox" name="event-offer-${offerType}">
-          <label class="event__offer-label" for="event-offer-${offerType}-1">
-            <span class="event__offer-title">${offerType}</span>
-            &plus;
-            &euro;&nbsp;<span class="event__offer-price">${offerPrice}</span>
-          </label>
-        </div>
-      </div>
-    </section>
-
-    <section class="event__section  event__section--destination">
-      <h3 class="event__section-title  event__section-title--destination">Destination</h3>
-      <p class="event__destination-description">${description}</p>
-
-      <div class="event__photos-container">
-        <div class="event__photos-tape">
-
-          <img class="event__photo" src=${photo} alt="Event photo">
-          <img class="event__photo" src=${photo} alt="Event photo">
-          <img class="event__photo" src=${photo} alt="Event photo">
-          <img class="event__photo" src=${photo} alt="Event photo">
-          <img class="event__photo" src=${photo} alt="Event photo">
-        </div>
-      </div>
-    </section>
+    ${createOffersSectionTemplate()}
+    ${createDestinationSectionTemplate(description, photo)}
   </section>
 </form>`;
 };
